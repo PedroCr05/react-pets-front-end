@@ -4,10 +4,9 @@ import axios from "axios";
 const index = async () => {
   try {
     const res = await axios.get(BASE_URL);
-    console.log(res);
     return res.data;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 

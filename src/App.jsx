@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import * as petService from "./services/petService";
+import PetList from "./components/PetList";
+import PetDetails from "./components/PetDetails";
 
 const App = () => {
   const [petList, setPetList] = useState([]);
+  // Why use null? It did say object. Or am I getting confused?
+  const [selected, setSelected] = useState({});
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -20,7 +24,17 @@ const App = () => {
     fetchPets();
   }, []);
 
-  return <h1>Hello World</h1>;
+  const updateSelected = (pet) => {
+    setSelected(pet);
+  };
+
+  return (
+    <>
+      <h1>My favorite pets! :D</h1>
+      <PetList petList={petList} updateSelected={updateSelected} />
+      <PetDetails selected={selected} />
+    </>
+  );
 };
 
 export default App;
