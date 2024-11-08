@@ -16,6 +16,7 @@ const App = () => {
         if (pets.error) {
           throw new Error(pets.error);
         }
+        // To test the ternary works just slap an empty array brackets.
         setPetList(pets);
       } catch (error) {
         console.log(error);
