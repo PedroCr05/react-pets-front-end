@@ -7,6 +7,7 @@ const index = async () => {
     return res.data;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -20,6 +21,7 @@ const create = async (formData) => {
     return res.json();
   } catch (e) {
     console.log(e);
+    throw e;
   }
 };
 

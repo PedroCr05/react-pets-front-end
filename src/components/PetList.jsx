@@ -20,7 +20,7 @@ const PetList = (props) => {
     <div>
       <h2>Pet List</h2>
       {!props.petList.length ? <h3>There is no pets</h3> : <ul>{pets}</ul>}
-      <button></button>
+      <button>List pets?</button>
     </div>
   );
 };
