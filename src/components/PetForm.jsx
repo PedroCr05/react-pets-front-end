@@ -22,7 +22,12 @@ const PetForm = (props) => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    props.handleAddPet(formData);
+    if (props.selected) {
+      props.handleUpdatePet(formData, props.selected._id);
+    } else {
+      props.handleAddPet(formData);
+    }
+
     // setFormData({ name: ``, age: ``, breed: `` });
   };
 
