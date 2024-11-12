@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as petService from "./services/petService";
 import PetList from "./components/PetList";
 import PetDetails from "./components/PetDetails";
+import PetForm from "./components/PetForm";
 
 const App = () => {
   const [petList, setPetList] = useState([]);
@@ -44,7 +45,7 @@ const App = () => {
         handleFormView={handleFormView}
         isFormOpen={isFormOpen}
       />
-      <PetDetails selected={selected} />
+      {isFormOpen ? <PetForm /> : <PetDetails selected={selected} />}
     </>
   );
 };

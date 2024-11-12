@@ -52,6 +52,7 @@ const PetForm = (props) => {
           onChange={handleChange}
           required
         />
+        <button>Submit</button>
       </form>
     </>
   );
