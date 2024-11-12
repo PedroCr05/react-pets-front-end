@@ -16,6 +16,11 @@ const PetForm = (props) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+    props.handleAddPet(formData);
+  };
+
   return (
     <>
       <form>
@@ -52,7 +57,7 @@ const PetForm = (props) => {
           onChange={handleChange}
           required
         />
-        <button>Submit</button>
+        <button onClick={handleSubmitForm}>Submit</button>
       </form>
     </>
   );

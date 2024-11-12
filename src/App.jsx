@@ -55,7 +55,11 @@ const App = () => {
         handleFormView={handleFormView}
         isFormOpen={isFormOpen}
       />
-      {isFormOpen ? <PetForm /> : <PetDetails selected={selected} />}
+      {isFormOpen ? (
+        <PetForm handleAddPet={handleAddPet} />
+      ) : (
+        <PetDetails selected={selected} />
+      )}
     </>
   );
 };
