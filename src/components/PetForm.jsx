@@ -19,11 +19,12 @@ const PetForm = (props) => {
   const handleSubmitForm = (event) => {
     event.preventDefault();
     props.handleAddPet(formData);
+    setFormData({ name: ``, age: ``, breed: `` });
   };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmitForm}>
         <label htmlFor="name">Name:</label>
         <input
           // type="text" isn't necessary since this is the default option already but it's still nice to have it just in case.
@@ -57,7 +58,7 @@ const PetForm = (props) => {
           onChange={handleChange}
           required
         />
-        <button onClick={handleSubmitForm}>Submit</button>
+        <button>Submit</button>
       </form>
     </>
   );
