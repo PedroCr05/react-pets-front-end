@@ -10,4 +10,17 @@ const index = async () => {
   }
 };
 
+const create = async (formData) => {
+  try {
+    const createPet = await axios.post(BASE_URL, {
+      method: `POST`,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    return res.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export { index };
