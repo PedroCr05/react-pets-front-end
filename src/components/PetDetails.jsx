@@ -15,6 +15,7 @@ const PetDetails = (props) => {
         </li>
         <li>Breed: {props.selected.breed}</li>
       </ul>
+      <button onClick={() => props.handleFormView(selected)}>Edit</button>
     </div>
   );
 };
