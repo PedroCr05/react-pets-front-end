@@ -13,16 +13,16 @@ const index = async () => {
 
 const create = async (formData) => {
   try {
-    const createPet = await axios.post(BASE_URL, {
-      method: `POST`,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    const res = await axios.post(BASE_URL, formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    return res.json();
-  } catch (e) {
-    console.log(e);
-    throw e;
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 
-export { index };
+export { index, create };
