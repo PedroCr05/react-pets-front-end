@@ -42,6 +42,7 @@ const App = () => {
         petList={petList}
         updateSelected={updateSelected}
         handleFormView={handleFormView}
+        isFormOpen={isFormOpen}
       />
       <PetDetails selected={selected} />
     </>
