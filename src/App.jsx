@@ -33,6 +33,7 @@ const App = () => {
   };
 
   const handleFormView = (pet) => {
+    if (!pet.name) setSelected(null);
     setIsFormOpen(!isFormOpen);
   };
 

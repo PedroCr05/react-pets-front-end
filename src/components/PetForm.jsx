@@ -1,11 +1,15 @@
 import { useState } from "react";
 
 const PetForm = (props) => {
-  const [formData, setFormData] = useState({
+  const initState = {
     name: ``,
     age: ``,
     breed: ``,
-  });
+  };
+
+  const [formData, setFormData] = useState(
+    props.selected ? props.selected : initState
+  );
 
   // The e (event, evt, et, & etc) refers to the property that we are using this for.
   // In this case it would be the change of the text box
@@ -58,7 +62,10 @@ const PetForm = (props) => {
           onChange={handleChange}
           required
         />
-        <button>Submit</button>
+        {/* Buttons by default are considered as type="submit". Don't need to have it but maybe might be nice to have! */}
+        <button type="submit">
+          {props.selected ? `Update Pet` : `Add New Pet`}
+        </button>
       </form>
     </>
   );
