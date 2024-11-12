@@ -47,6 +47,19 @@ const App = () => {
     }
   };
 
+  const handleUpdatePet = async (formData, id) => {
+    try {
+      const updatedPet = await petService.updatePet(formData, id);
+      setPetList(updatedPet);
+
+      if (updatedPet.error) {
+        throw new Error(updatedPet.error);
+      }
+    } catch (e) {
+      console.Error(e);
+    }
+  };
+
   return (
     <>
       <h1>My favorite pets! :D</h1>
@@ -57,7 +70,11 @@ const App = () => {
         isFormOpen={isFormOpen}
       />
       {isFormOpen ? (
-        <PetForm selected={selected} handleAddPet={handleAddPet} />
+        <PetForm
+          selected={selected}
+          handleAddPet={handleAddPet}
+          handleUpdatePet={handleUpdatePet}
+        />
       ) : (
         <PetDetails selected={selected} handleFormView={handleFormView} />
       )}
