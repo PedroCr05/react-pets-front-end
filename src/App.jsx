@@ -6,7 +6,9 @@ import PetDetails from "./components/PetDetails";
 const App = () => {
   const [petList, setPetList] = useState([]);
   // Why use null? It did say object. Or am I getting confused?
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState(null);
+  // The form is basically to now instantly show up when the user loads the page.
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -29,10 +31,18 @@ const App = () => {
     setSelected(pet);
   };
 
+  const handleFormView = () => {
+    setIsFormOpen(!isFormOpen);
+  };
+
   return (
     <>
       <h1>My favorite pets! :D</h1>
-      <PetList petList={petList} updateSelected={updateSelected} />
+      <PetList
+        petList={petList}
+        updateSelected={updateSelected}
+        handleFormView={handleFormView}
+      />
       <PetDetails selected={selected} />
     </>
   );

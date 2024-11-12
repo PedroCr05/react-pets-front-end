@@ -56,3 +56,5 @@ const PetForm = (props) => {
     </>
   );
 };
+
+export default PetForm;
