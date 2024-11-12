@@ -36,6 +36,16 @@ const App = () => {
     setIsFormOpen(!isFormOpen);
   };
 
+  const handleAddPet = async (formData) => {
+    try {
+      const newPet = await petService.create(formData);
+      setPetList(newPet, ...petList);
+      setIsFormOpen(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <h1>My favorite pets! :D</h1>
