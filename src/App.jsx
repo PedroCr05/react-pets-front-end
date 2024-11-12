@@ -49,14 +49,14 @@ const App = () => {
 
   const handleUpdatePet = async (formData, id) => {
     try {
-      const updatedPet = await petService.updatePet(formData, id);
+      const updatedPet = await petService.updatedPet(formData, id);
       setPetList(updatedPet);
 
       if (updatedPet.error) {
         throw new Error(updatedPet.error);
       }
     } catch (e) {
-      console.Error(e);
+      console.log(e);
     }
   };
 

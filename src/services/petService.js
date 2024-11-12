@@ -30,9 +30,7 @@ const update = async (formData, id) => {
     const res = await axios.put(BASE_URL, formData, id);
     return res.data;
   } catch (e) {
-    // console.log(e);
-    console.Error(e);
-    // throw e;
+    console.log(e);
   }
 };
 
