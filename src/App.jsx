@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import * as petService from "./services/petService";
-import PetList from "./components/PetList";
 import PetDetails from "./components/PetDetails";
 import PetForm from "./components/PetForm";
+import PetList from "./components/PetList";
 
 const App = () => {
   const [petList, setPetList] = useState([]);
@@ -47,16 +47,6 @@ const App = () => {
     }
   };
 
-  const handleAdoptPet = async (formData) => {
-    try {
-      const adoptPet = await petService.adoptPet(formData);
-      setPetList([]);
-      setIsFormOpen(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // I'm not sure what I'm doing sadly... Brain mush ;-;
 
   const handleUpdatePet = async (formData, id) => {
@@ -72,8 +62,25 @@ const App = () => {
 
       setIsFormOpen(false);
       setSelected(updatePet);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRemovePet = async (formData, id) => {
+    try {
+      const adoptPet = await petService.deletePet(formData, id);
+      if (adoptPet.error) {
+        throw new Error(adoptPet.error);
+      }
+
+      // Confused on the .filter(method) How would I filter it out?
+      // Maybe like calling a new argument with pet then searching for the name? or id?
+
+      setIsFormOpen(false);
+      setSelected(null);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -93,7 +100,11 @@ const App = () => {
           handleUpdatePet={handleUpdatePet}
         />
       ) : (
-        <PetDetails selected={selected} handleFormView={handleFormView} />
+        <PetDetails
+          selected={selected}
+          handleFormView={handleFormView}
+          handleRemovePet={handleRemovePet}
+        />
       )}
     </>
   );
