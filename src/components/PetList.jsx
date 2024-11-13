@@ -20,7 +20,9 @@ const PetList = (props) => {
     <div>
       <h2>Pet List</h2>
       {!props.petList.length ? <h3>There is no pets</h3> : <ul>{pets}</ul>}
-      <button>New Pet </button>
+      <button onClick={props.handleFormView}>
+        {props.isFormOpen ? `Close Form` : `New Pet`}
+      </button>
     </div>
   );
 };

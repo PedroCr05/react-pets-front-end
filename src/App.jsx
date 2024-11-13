@@ -40,21 +40,28 @@ const App = () => {
   const handleAddPet = async (formData) => {
     try {
       const newPet = await petService.create(formData);
-      setPetList(newPet, ...petList);
+      setPetList([newPet, ...petList]);
       setIsFormOpen(false);
     } catch (e) {
       console.log(e);
     }
   };
 
+  // I'm not sure what I'm doing sadly... Brain mush ;-;
+
   const handleUpdatePet = async (formData, id) => {
     try {
-      const updatedPet = await petService.updatedPet(formData, id);
-      setPetList(updatedPet);
-
-      if (updatedPet.error) {
-        throw new Error(updatedPet.error);
+      const updatePet = await petService.update(formData, id);
+      if (updatePet.error) {
+        throw new Error(updatePet.error);
       }
+
+      setPetList((prevState) =>
+        prevState.map((pet) => (pet._id === id ? updatePet : pet))
+      );
+
+      setIsFormOpen(false);
+      setSelected(updatePet);
     } catch (e) {
       console.log(e);
     }

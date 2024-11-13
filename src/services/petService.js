@@ -27,7 +27,7 @@ const create = async (formData) => {
 
 const update = async (formData, id) => {
   try {
-    const res = await axios.put(`${BASE_URL}/${id}`, formData, id);
+    const res = await axios.put(`${BASE_URL}/${id}`, formData);
     return res.data;
   } catch (e) {
     console.log(e);
