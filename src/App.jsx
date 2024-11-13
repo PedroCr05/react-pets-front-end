@@ -67,16 +67,22 @@ const App = () => {
     }
   };
 
-  const handleRemovePet = async (formData, id) => {
+  const handleRemovePet = async (id) => {
     try {
-      const adoptPet = await petService.deletePet(formData, id);
+      const adoptPet = await petService.deletePet(id);
       if (adoptPet.error) {
         throw new Error(adoptPet.error);
       }
 
       // Confused on the .filter(method) How would I filter it out?
       // Maybe like calling a new argument with pet then searching for the name? or id?
+      setPetList(petList.filter((pet) => pet._id !== adoptPet._id));
+      // Above here is the code snippet. Was confused but also why use filter? What is the difference between map and filter?
+      // Aren't both the same thing?
 
+      // .map() = List elements from the array
+
+      // .filter() = Having a condition or just removing elements within the array
       setIsFormOpen(false);
       setSelected(null);
     } catch (error) {

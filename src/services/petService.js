@@ -27,12 +27,14 @@ const create = async (formData) => {
 
 const deletePet = async (id) => {
   try {
-    // Looking at the code snippet. I noticed formData isn't needed. Why?
-    // Or am I getting confused?
-    const res = await axios.delete(`${BASE_URL}/${id}`, {
+    const res = await axios.delete(
+      `${BASE_URL}/${id}`
       // This isn't needed but it's good to know that axios already removes this for us
-      method: `Delete`,
-    });
+      // method: `Delete`,
+
+      // When calling .delete with axios. It already does that.
+    );
+
     return res.data;
   } catch (error) {
     console.log(error);
