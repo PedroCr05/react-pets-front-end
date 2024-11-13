@@ -19,9 +19,19 @@ const create = async (formData) => {
       },
     });
     return res.data;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
     throw err;
+  }
+};
+
+const adopt = async (formData, id) => {
+  try {
+    const res = await axios.delete(`${BASE_URL}/${id}`, formData);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };
 
@@ -34,4 +44,4 @@ const update = async (formData, id) => {
   }
 };
 
-export { index, create, update };
+export { adopt, create, index, update };

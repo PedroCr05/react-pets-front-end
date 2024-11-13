@@ -42,8 +42,18 @@ const App = () => {
       const newPet = await petService.create(formData);
       setPetList([newPet, ...petList]);
       setIsFormOpen(false);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAdoptPet = async (formData) => {
+    try {
+      const adoptPet = await petService.adoptPet(formData);
+      setPetList([]);
+      setIsFormOpen(false);
+    } catch (error) {
+      console.log(error);
     }
   };
 
